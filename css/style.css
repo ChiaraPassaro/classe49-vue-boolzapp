@@ -1,0 +1,48 @@
+:root {
+  --grey-1: rgb(221, 219, 209);
+  --grey-2: rgb(210, 219, 220);
+  --green: hsl(174, 100%, 29%);
+  --bg-header: rgb(235, 235, 235);
+  --bg-contact-list: rgb(255, 255, 255);
+  --color-icons: rgb(177, 177, 177);
+  --font-color-light: rgb(79, 79, 79);
+  --font-color-base: rgb(0, 0, 0)
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.f-left {
+  float: left;
+}
+
+.list-none {
+  list-style: none;
+}
+
+.list-inline {
+  list-style: none;
+}
+.list-inline .list-item {
+  display: inline;
+}
+
+/* Layout */                                                          
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
+  color: var(--font-color-base);
+}
+
+body {
+  min-width: 950px;
+}
