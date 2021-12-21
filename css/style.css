@@ -1,7 +1,7 @@
 :root {
-  --grey-1: rgb(221, 219, 209);
-  --grey-2: rgb(210, 219, 220);
-  --green: hsl(174, 100%, 29%);
+  --grey-1: #dddbd1;
+  --grey-2: #d2dbdc;
+  --green: #009485;
   --bg-header: rgb(235, 235, 235);
   --bg-contact-list: rgb(255, 255, 255);
   --color-icons: rgb(177, 177, 177);
@@ -44,5 +44,116 @@ html {
 }
 
 body {
-  min-width: 950px;
+  min-width: 1370px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to top, #dddbd1, #d2dbdc 50%, #ccc 90%, #009485 90%);
+}
+
+#app {
+  width: 80%;
+  height: 90%;
+  background-color: blue;
+}
+.col-left {
+  width: 35%;
+  height: 100%;
+  background-color: pink;
+}
+.col-right {
+  width: 65%;
+  height: 100%;
+  background-color: grey;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  padding: 10px;
+  background-color: var(--grey-1);
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.avatar img {
+  width: 100%;
+}
+.info-user {
+  flex-grow: 1;
+}
+.user-name {
+  font-size: 1em;
+}
+.user-date {
+  font-size: 0.8em;
+  color: var(--font-color-light);
+}
+.icons {
+  font-size: 1.5em;
+  color: var(--color-icons);
+}
+.list-item i {
+  margin-left: 10px;
+}
+
+.disclaimer {
+  height: 80px;
+  background-color: yellowgreen;
+}
+
+.search {
+  height: 60px;
+  background-color: blue;
+}
+
+.contacts {
+  height: calc(100% - 70px - 80px - 60px);
+  background-color: red;
+  overflow-y: scroll;
+}
+.contacts-list-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: palevioletred;
+}
+.info-date {
+  color: var(--font-color-light);
+  font-size: 0.8em;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 90px - 70px);
+  padding: 20px;
+  background-color: orangered;
+  overflow-y: auto;
+}
+.message {
+  background-color: white;
+  width: 60%;
+  margin: 10px 0;
+}
+.message.sent {
+  background-color: chartreuse;
+  align-self: end;
+}
+
+.input-message {
+  height: 90px;
+  background-color: yellowgreen;
 }

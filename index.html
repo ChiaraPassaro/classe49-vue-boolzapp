@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
   <title>Document</title>
 </head>
 <body>
@@ -37,43 +39,21 @@
         <div class="search"></div>
         <div class="contacts">
           <ul class="contacts-list list-none">
-            <li class="contacts-list-item">
+            <li 
+              v-for="(contact, index) in contacts"
+              class="contacts-list-item">
               <div class="avatar">
-                <img src="img/avatar_io.jpg" alt="nome utente">
+                <img :src="`img/avatar${contact.avatar}.jpg`" alt="nome utente">
+                <!-- <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="nome utente"> -->
               </div>
               <div class="info-user">
-                <h2 class="user-name">Nome Utente</h2>
+                <h2 class="user-name">{{ contact.name }}</h2>
                 <h3 class="user-date">Tutto fatto</h3>
               </div>
               <div class="info-date">
                 10/01/2020 16:15:22
               </div>
-            </li>
-            <li class="contacts-list-item">
-              <div class="avatar">
-                <img src="img/avatar_io.jpg" alt="nome utente">
-              </div>
-              <div class="info-user">
-                <h2 class="user-name">Nome Utente</h2>
-                <h3 class="user-date">Tutto fatto</h3>
-              </div>
-              <div class="info-date">
-                10/01/2020 16:15:22
-              </div>
-            </li>
-            <li class="contacts-list-item">
-              <div class="avatar">
-                <img src="img/avatar_io.jpg" alt="nome utente">
-              </div>
-              <div class="info-user">
-                <h2 class="user-name">Nome Utente</h2>
-                <h3 class="user-date">Tutto fatto</h3>
-              </div>
-              <div class="info-date">
-                10/01/2020 16:15:22
-              </div>
-            </li>
-            
+            </li>          
           </ul>
         </div>
       </div>
