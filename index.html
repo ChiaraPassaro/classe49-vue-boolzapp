@@ -7,6 +7,13 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- script per dayjs -->
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/plugin/utc.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.20/plugin/customParseFormat.js"></script>
+  <!-- script per dayjs -->
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
   <title>Document</title>
@@ -40,6 +47,7 @@
         <div class="contacts">
           <ul class="contacts-list list-none">
             <li 
+              @click="changeContact(index)"
               v-for="(contact, index) in contacts"
               class="contacts-list-item">
               <div class="avatar">
@@ -66,7 +74,7 @@
               <img src="img/avatar_io.jpg" alt="nome utente">
             </div>
             <div class="info-user">
-              <h2 class="user-name">{{ contacts[0].name }}</h2>
+              <h2 class="user-name">{{ contacts[indexContact].name }}</h2>
               <div class="user-date">
                 Ultimo accesso oggi alle 10/01/2020 16:15:22
               </div>
@@ -81,7 +89,7 @@
           </header>
           <div class="messages">
             <div 
-              v-for="(message, index) in contacts[0].messages" class="message"
+              v-for="(message, index) in contacts[indexContact].messages" class="message"
               :class="(message.status == 'sent') ? 'sent' : 'received'"
             >
               <div> {{ message.text }}</div>

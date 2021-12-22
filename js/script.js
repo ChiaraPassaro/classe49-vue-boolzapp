@@ -13,6 +13,9 @@ Click sul contatto mostra la conversazione del contatto cliccato
 const app = new Vue({
   el: "#app",
   data: {
+    indexContact: 0,
+    numbers: [0, 4, 1],
+    copyNumbers: [0, 4, 1],
     contacts: [
       {
         name: "Michele",
@@ -102,12 +105,43 @@ const app = new Vue({
   created() {
     console.log(this.contacts[0].messages);
     console.log(this.contacts[0].messages[0].status);
-    if (this.contacts[0].messages[0].status == 'sent') {
-      console.log('classe sent');
+    if (this.contacts[0].messages[0].status == "sent") {
+      console.log("classe sent");
     }
 
     console.log(
-      (this.contacts[0].messages[2].status == 'sent') ? 'sent' : 'received');
+      this.contacts[0].messages[2].status == "sent" ? "sent" : "received"
+    );
+    // console.log(window);
+
+    //now
+    let now = dayjs();
+
+    // extend di day js per formati custom
+    dayjs.extend(window.dayjs_plugin_customParseFormat);
+
+    let year = dayjs("10/01/2020 15:50:00", "DD/MM/YYYY HH:mm:ss");
+
+    console.log(year);
+
+    let number = this.numbers.filter((element) => {
+      return element < 2;
+    });
+    
+    console.log(number);
+    this.numbers = number;
+    console.log(this.numbers);
+    this.numbers = this.copyNumbers;
+    console.log(this.numbers);
+    // console.log(
+
+    //   dayjs("20/03/2020 16:30:55", "DD/MM/YYYY HH:mm:ss")
+    // );
   },
-  methods: {},
+  methods: {
+    changeContact(index) {
+      console.log(index);
+      this.indexContact = index;
+    },
+  },
 });
