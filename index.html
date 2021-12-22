@@ -66,7 +66,7 @@
               <img src="img/avatar_io.jpg" alt="nome utente">
             </div>
             <div class="info-user">
-              <h2 class="user-name">Nome Contatto</h2>
+              <h2 class="user-name">{{ contacts[0].name }}</h2>
               <div class="user-date">
                 Ultimo accesso oggi alle 10/01/2020 16:15:22
               </div>
@@ -80,8 +80,12 @@
             </div>
           </header>
           <div class="messages">
-            <div class="message">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit maxime repudiandae quaerat veniam sapiente maiores, facilis deleniti corrupti amet quis repellat cumque, minus numquam pariatur? Officiis a facilis itaque assumenda?
+            <div 
+              v-for="(message, index) in contacts[0].messages" class="message"
+              :class="(message.status == 'sent') ? 'sent' : 'received'"
+            >
+              <div> {{ message.text }}</div>
+              <div> {{ message.date }}</div>
             </div>
             <!-- <div class="message sent">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit maxime repudiandae quaerat veniam sapiente maiores, facilis deleniti corrupti amet quis repellat cumque, minus numquam pariatur? Officiis a facilis itaque assumenda?

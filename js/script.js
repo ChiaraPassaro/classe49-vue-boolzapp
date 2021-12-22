@@ -99,6 +99,15 @@ const app = new Vue({
       },
     ],
   },
-  created() {},
+  created() {
+    console.log(this.contacts[0].messages);
+    console.log(this.contacts[0].messages[0].status);
+    if (this.contacts[0].messages[0].status == 'sent') {
+      console.log('classe sent');
+    }
+
+    console.log(
+      (this.contacts[0].messages[2].status == 'sent') ? 'sent' : 'received');
+  },
   methods: {},
 });
