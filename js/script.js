@@ -114,29 +114,28 @@ const app = new Vue({
     );
     // console.log(window);
 
-    //now
+    //data attuale
     let now = dayjs();
 
     // extend di day js per formati custom
     dayjs.extend(window.dayjs_plugin_customParseFormat);
+    //ora posso passare il tipo di data
+    let data = dayjs("10/01/2020 15:50:00", "DD/MM/YYYY HH:mm:ss");
 
-    let year = dayjs("10/01/2020 15:50:00", "DD/MM/YYYY HH:mm:ss");
 
-    console.log(year);
-
+    //facciamo un filter 
     let number = this.numbers.filter((element) => {
       return element < 2;
     });
-    
+
     console.log(number);
+    //sostituiamo il nostro array originale
     this.numbers = number;
     console.log(this.numbers);
+
+    //ripristiniamo i dati con una copia
     this.numbers = this.copyNumbers;
     console.log(this.numbers);
-    // console.log(
-
-    //   dayjs("20/03/2020 16:30:55", "DD/MM/YYYY HH:mm:ss")
-    // );
   },
   methods: {
     changeContact(index) {
