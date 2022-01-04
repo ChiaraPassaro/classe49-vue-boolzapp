@@ -87,24 +87,31 @@
               </ul>
             </div>
           </header>
-          <div class="messages">
-            <div 
-              v-for="(message, index) in contacts[indexContact].messages" class="message"
-              :class="(message.status == 'sent') ? 'sent' : 'received'"
-            >
-              <div> {{ message.text }}</div>
-              <div> {{ message.date }}</div>
+
+            <div class="messages">
+              <div v-for="(message, index) in contacts[indexContact].messages" class="message"
+                :class="(message.status == 'sent') ? 'sent' : 'received'">
+                <div class="message-text">
+                  <div class="message-text-content">
+                    {{ message.text }}
+                  </div>
+                  <i class="fa fa-chevron-down f-right message-options"></i>
+                </div>
+                <div class="message-date"> {{ message.date }}</div>
+            
+                <!-- hidden menu -->
+                <!-- <ul class="message-options-panel" v-if="messageActive.show && index === messageActive.index">
+                  <li class="message-options-panel-item">
+                    Info messaggio
+                  </li>
+                  <li class="message-options-panel-item">
+                    Cancella messaggio
+                  </li>
+                </ul> -->
+                <!-- /hidden menu -->
+              </div>
+            
             </div>
-            <!-- <div class="message sent">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit maxime repudiandae quaerat veniam sapiente maiores, facilis deleniti corrupti amet quis repellat cumque, minus numquam pariatur? Officiis a facilis itaque assumenda?
-            </div>
-            <div class="message">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit maxime repudiandae quaerat veniam sapiente maiores, facilis deleniti corrupti amet quis repellat cumque, minus numquam pariatur? Officiis a facilis itaque assumenda?
-            </div>
-            <div class="message">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit maxime repudiandae quaerat veniam sapiente maiores, facilis deleniti corrupti amet quis repellat cumque, minus numquam pariatur? Officiis a facilis itaque assumenda?
-            </div> -->
-          </div>
           <div class="input-message">
             <div class="input-message-icon f-left">
               <i class="far fa-smile"></i>
