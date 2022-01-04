@@ -1,11 +1,13 @@
 :root {
-  --grey-1: #dddbd1;
+  --grey-1: #EAEAEA;
   --grey-2: #d2dbdc;
-  --green: #009485;
+  --grey-3: #E9EBEB;
+  --green: #D5F9BA;
+  --light-blue: #8EDAFC;
   --bg-header: rgb(235, 235, 235);
-  --bg-contact-list: rgb(255, 255, 255);
+  --bg-contact-list: #FAFAFA;
   --color-icons: rgb(177, 177, 177);
-  --font-color-light: rgb(79, 79, 79);
+  --font-color-light: rgb(136, 128, 128);
   --font-color-base: rgb(0, 0, 0)
 }
 
@@ -59,19 +61,19 @@ body {
 #app {
   width: 80%;
   height: 90%;
-  background-color: blue;
 }
+
 .col-left {
   width: 35%;
   height: 100%;
-  background-color: pink;
+  background-color: var(--bg-contact-list);
 }
 .col-right {
   width: 65%;
   height: 100%;
-  background-color: grey;
 }
 
+/* header */
 .header {
   display: flex;
   justify-content: space-around;
@@ -108,52 +110,169 @@ body {
   margin-left: 10px;
 }
 
+/* disclaimer */
 .disclaimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80px;
-  background-color: yellowgreen;
+  background-color: var(--light-blue);
+  font-size: 0.9em;
+}
+.disclaimer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1em;
+  border-radius: 50%;
+  background-color: white;
+  font-size: 1.3rem;
+  color: var(--light-blue);
+}
+.disclaimer-text a {
+  font-size: 0.9em;
+  color: var(--font-color-light);
 }
 
+/* search */
 .search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 60px;
-  background-color: blue;
+  padding: 0 0.9rem;
+  background-color: var(--bg-contact-list);
+}
+.search label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 70%;
+  background-color: white;
+  border-left: 1px solid var(--grey-3);
+  border-top: 1px solid var(--grey-3);
+  border-bottom: 1px solid var(--grey-3);
+}
+.search input {
+  width: 80%;
+  height: 70%;
+  border: 0;
+  outline: none;
+  border-right: 1px solid var(--grey-3);
+  border-top: 1px solid var(--grey-3);
+  border-bottom: 1px solid var(--grey-3);
+  background-color: white;
+}
+.search:focus-within label,
+.search:focus-within input {
+  border-color: var(--light-blue);
 }
 
+/* contacts */
 .contacts {
   height: calc(100% - 70px - 80px - 60px);
-  background-color: red;
   overflow-y: scroll;
+  background-color: white;
 }
 .contacts-list-item {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
-  background-color: palevioletred;
+  cursor: pointer;
+}
+.contacts-list-item:not(:last-child) {
+    border-bottom: 1px solid var(--grey-1);
+}
+.contacts-list-item.active {
+  background-color: var(--grey-3);
 }
 .info-date {
   color: var(--font-color-light);
   font-size: 0.8em;
 }
 
+/*Messages */
 .messages {
   display: flex;
   flex-direction: column;
   height: calc(100% - 90px - 70px);
   padding: 20px;
-  background-color: orangered;
   overflow-y: auto;
+  background-image: url(../img/mine.jpg);
 }
 .message {
-  background-color: white;
+  position: relative;
   width: 60%;
   margin: 10px 0;
+  padding: 0.8em;
+  border-radius: 0.5em;
+  background-color: white;
 }
 .message.sent {
-  background-color: chartreuse;
+  background-color: var(--green);
   align-self: end;
 }
+.message-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  text-align: left;
+}
+.message-date {
+  font-size: 0.7em;
+  color: var(--font-color-light);
+  text-align: right;
+}
+.message-options {
+  visibility: hidden;
+  cursor: pointer;
+}
+.message-options-panel {
+  position: absolute;
+  z-index: 3;
+  top: 60%;
+  right: 0;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  list-style: none;
+}
+.message-options-panel-item {
+  width: 100%;
+  padding: 1em;
+  cursor: pointer;
+}
+.message-options-panel-item:hover {
+  background-color: var(--grey-1);
+}
+.message:hover .message-options {
+  visibility: visible;
+}
 
+/* Input Message */
 .input-message {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 90px;
-  background-color: yellowgreen;
+  background-color: var(--grey-1);
+}
+.input-message-icon {
+  width: 10%;
+  text-align: center;
+  font-size: 2em;
+  color: var(--font-color-light);
+}
+.input-message-input {
+  width: 80%;
+  height: 70%;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+}
+.input-message-input:focus {
+    outline-color: var(--light-blue);
 }
