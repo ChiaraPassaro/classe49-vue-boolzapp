@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,9 +19,12 @@
 
   <title>Document</title>
 </head>
+
 <body>
+  <!-- container -->
   <div class="container">
-    <div id="app" class="clearfix"> 
+  <!-- app -->
+    <div id="app" class="clearfix">
       <!-- col-left -->
       <div class="col-left f-left">
         <!-- header -->
@@ -40,18 +44,39 @@
           </div>
         </header>
         <!--/header -->
+
+        <!-- disclaimer -->
         <div class="disclaimer">
-          lorem
+          <div class="disclaimer-logo">
+            <i class="fa fa-bell-slash" aria-hidden="true"></i>
+          </div>
+          <div class="disclaimer-text">
+            <h3>Ricevi notifiche di nuovi messaggi</h3>
+            <a href="#">Attiva notifiche desktop</a>
+          </div>
         </div>
-        <div class="search"></div>
+        <!-- /disclaimer -->
+
+        <!-- search -->
+        <div class="search">
+          <label for="search" class="search-label">
+            <i aria-hidden="true" class="fa fa-search"></i>
+          </label>
+          <input 
+            v-model="textSearch" 
+            type="text" 
+            id="search" 
+            name="search" 
+            placeholder="Cerca o inizia una nuova chat"
+          >
+        </div>
+        <!-- /search -->
+
+        <!-- contacts -->
         <div class="contacts">
           <ul class="contacts-list list-none">
-            <li 
-              @click="changeContact(index)"
-              v-for="(contact, index) in contacts"
-              :class="index === indexContact ? 'active' : ''"
-              class="contacts-list-item"
-              >
+            <li @click="changeContact(index)" v-for="(contact, index) in contacts"
+              :class="index === indexContact ? 'active' : ''" class="contacts-list-item">
               <div class="avatar">
                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="nome utente">
                 <!-- <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="nome utente"> -->
@@ -63,46 +88,52 @@
               <div class="info-date">
                 10/01/2020 16:15:22
               </div>
-            </li>          
+            </li>
           </ul>
         </div>
+        <!-- /contacts -->
+
       </div>
       <!-- /col-left -->
 
       <!-- col-right -->
       <div class="col-right f-left">
-          <header class="header">
-            <div class="avatar">
-              <img src="img/avatar_io.jpg" alt="nome utente">
+        <!-- header -->
+        <header class="header">
+          <div class="avatar">
+            <img src="img/avatar_io.jpg" alt="nome utente">
+          </div>
+          <div class="info-user">
+            <h2 class="user-name">{{ contacts[indexContact].name }}</h2>
+            <div class="user-date">
+              Ultimo accesso oggi alle 10/01/2020 16:15:22
             </div>
-            <div class="info-user">
-              <h2 class="user-name">{{ contacts[indexContact].name }}</h2>
-              <div class="user-date">
-                Ultimo accesso oggi alle 10/01/2020 16:15:22
-              </div>
-            </div>
-            <div class="icons">
-              <ul class="list-inline">
-                <li class="list-item"><i class="fas fa-search"></i></li>
-                <li class="list-item"><i class="fas fa-paperclip"></i></li>
-                <li class="list-item"><i class="fas fa-ellipsis-v"></i></li>
-              </ul>
-            </div>
-          </header>
+          </div>
+          <div class="icons">
+            <ul class="list-inline">
+              <li class="list-item"><i class="fas fa-search"></i></li>
+              <li class="list-item"><i class="fas fa-paperclip"></i></li>
+              <li class="list-item"><i class="fas fa-ellipsis-v"></i></li>
+            </ul>
+          </div>
+        </header>
+        <!-- /header -->
 
-            <div class="messages">
-              <div v-for="(message, index) in contacts[indexContact].messages" class="message"
-                :class="(message.status == 'sent') ? 'sent' : 'received'">
-                <div class="message-text">
-                  <div class="message-text-content">
-                    {{ message.text }}
-                  </div>
-                  <i class="fa fa-chevron-down f-right message-options"></i>
-                </div>
-                <div class="message-date"> {{ message.date }}</div>
-            
-                <!-- hidden menu -->
-                <!-- <ul class="message-options-panel" v-if="messageActive.show && index === messageActive.index">
+        <!-- messages -->
+        <div class="messages">
+          <!-- message -->
+          <div v-for="(message, index) in contacts[indexContact].messages" class="message"
+            :class="(message.status == 'sent') ? 'sent' : 'received'">
+            <div class="message-text">
+              <div class="message-text-content">
+                {{ message.text }}
+              </div>
+              <i class="fa fa-chevron-down f-right message-options"></i>
+            </div>
+            <div class="message-date"> {{ message.date }}</div>
+
+            <!-- hidden menu -->
+            <!-- <ul class="message-options-panel" v-if="messageActive.show && index === messageActive.index">
                   <li class="message-options-panel-item">
                     Info messaggio
                   </li>
@@ -110,25 +141,31 @@
                     Cancella messaggio
                   </li>
                 </ul> -->
-                <!-- /hidden menu -->
-              </div>
-            
-            </div>
-          <div class="input-message">
-            <div class="input-message-icon f-left">
-              <i class="far fa-smile"></i>
-            </div>
-            <input v-model="newMessage" @keyup.enter="sendMessage" class="input-message-input" placeholder="Scrivi un messaggio">
-            <div class="input-message-icon f-right">
-              <i class="fa fa-microphone" aria-hidden="true"></i>
-            </div>
+            <!-- /hidden menu -->
           </div>
+          <!-- /message -->
+        </div>
+        <!-- /messages -->
+
+        <!-- input message -->
+        <div class="input-message">
+          <div class="input-message-icon f-left">
+            <i class="far fa-smile"></i>
+          </div>
+          <input v-model="newMessage" @keyup.enter="sendMessage" class="input-message-input"
+            placeholder="Scrivi un messaggio">
+          <div class="input-message-icon f-right">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
+          </div>
+        </div>
+        <!-- /input message -->
       </div>
       <!-- /col-right -->
-
     </div>
+    <!-- /app -->
   </div>
+  <!-- /container -->
   <script src="js/script.js"></script>
 </body>
-</html>
 
+</html>
