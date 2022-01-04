@@ -49,7 +49,9 @@
             <li 
               @click="changeContact(index)"
               v-for="(contact, index) in contacts"
-              class="contacts-list-item">
+              :class="index === indexContact ? 'active' : ''"
+              class="contacts-list-item"
+              >
               <div class="avatar">
                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="nome utente">
                 <!-- <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="nome utente"> -->
