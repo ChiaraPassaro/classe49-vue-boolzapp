@@ -106,7 +106,13 @@
             </div> -->
           </div>
           <div class="input-message">
-
+            <div class="input-message-icon f-left">
+              <i class="far fa-smile"></i>
+            </div>
+            <input v-model="newMessage" @keyup.enter="sendMessage" class="input-message-input" placeholder="Scrivi un messaggio">
+            <div class="input-message-icon f-right">
+              <i class="fa fa-microphone" aria-hidden="true"></i>
+            </div>
           </div>
       </div>
       <!-- /col-right -->
