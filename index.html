@@ -10,9 +10,12 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- script per dayjs -->
-  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-  <script src="https://unpkg.com/dayjs@1.8.21/plugin/utc.js"></script>
-  <script src="https://unpkg.com/dayjs@1.8.20/plugin/customParseFormat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.35/dayjs.min.js
+
+"></script>
+  <!-- <script src="https://unpkg.com/dayjs@1.8.21/plugin/utc.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.35/plugin/utc.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.35/plugin/customParseFormat.js"></script>
   <!-- script per dayjs -->
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -63,6 +66,7 @@
             <i aria-hidden="true" class="fa fa-search"></i>
           </label>
           <input 
+            @keyup="searchContact"
             v-model="textSearch" 
             type="text" 
             id="search" 
@@ -75,7 +79,9 @@
         <!-- contacts -->
         <div class="contacts">
           <ul class="contacts-list list-none">
-            <li @click="changeContact(index)" v-for="(contact, index) in contacts"
+            <li 
+              v-if="contact.visible"
+              @click="changeContact(index)" v-for="(contact, index) in contacts"
               :class="index === indexContact ? 'active' : ''" class="contacts-list-item">
               <div class="avatar">
                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="nome utente">
@@ -122,25 +128,31 @@
         <!-- messages -->
         <div class="messages">
           <!-- message -->
-          <div v-for="(message, index) in contacts[indexContact].messages" class="message"
+          <div 
+          v-if="contacts[indexContact].messages.length > 0"
+          v-for="(message, index) in contacts[indexContact].messages" class="message"
             :class="(message.status == 'sent') ? 'sent' : 'received'">
             <div class="message-text">
               <div class="message-text-content">
                 {{ message.text }}
               </div>
-              <i class="fa fa-chevron-down f-right message-options"></i>
+              <i 
+              @click="showMenu(index)"
+              class="fa fa-chevron-down f-right message-options"></i>
             </div>
             <div class="message-date"> {{ message.date }}</div>
 
             <!-- hidden menu -->
-            <!-- <ul class="message-options-panel" v-if="messageActive.show && index === messageActive.index">
+            <ul class="message-options-panel" v-if="messageActive.show && index === messageActive.index">
                   <li class="message-options-panel-item">
                     Info messaggio
                   </li>
-                  <li class="message-options-panel-item">
+                  <li 
+                  @click="deleteMessage(index)"
+                  class="message-options-panel-item">
                     Cancella messaggio
                   </li>
-                </ul> -->
+                </ul>
             <!-- /hidden menu -->
           </div>
           <!-- /message -->
